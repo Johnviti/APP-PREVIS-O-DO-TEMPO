@@ -7,6 +7,9 @@ import { Button } from 'react-native-elements';
 import Toast from 'react-native-toast-message';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { Input } from '@rneui/themed';
+import { useEffect } from 'react';
+
 
 
 
@@ -14,10 +17,14 @@ import { ptBR } from 'date-fns/locale';
 const Home = () => {
     const [weather, setWeather] = useState(null);
     const [daysweather, setDaysweather] = useState(null);
-    const cidade = 'Maceió';
+    const [cidade, setCidade] = useState('Maceió');
 
-    const HandleChange = (e) => {
-        setCidade('Maceió');
+    useEffect(() => {
+        HandleSubmit();
+    }, []);
+
+    const HandleChange = (text) => {
+        setCidade(text.nativeEvent.text);
     }
 
     const HandleSubmit = (e) => {
@@ -31,7 +38,6 @@ const Home = () => {
                 return response.json();
             })
             .then((data) => {
-                console.log(data);
                 setWeather(data);
             })
             .catch((error) => {
@@ -46,7 +52,6 @@ const Home = () => {
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=560ac4f5cf1f41168a0195626232312&q=${cidade}&days=7&lang=pt`)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setDaysweather(data);
             })
             .catch((error) => {
@@ -68,7 +73,7 @@ const Home = () => {
                 <View style={styles.header}>
                     <View style={styles.headerLeft}>
                         <Icon name="map-marker" size={24} color="white" />
-                        <Text style={styles.headerLeftText}>{cidade}</Text>
+                        <Text style={styles.headerLeftText} onPress={HandleChange}>{cidade}</Text>
                         <Icon name="caret-down" size={24} color="white" />
                     </View>
                     <Icon name="bell" size={24} color="white" />
@@ -94,6 +99,13 @@ const Home = () => {
                 </ScrollView>
             </View>
             <View style={styles.rodape}>
+                <Text style={{ color: "#FFF", fontSize: 16, fontWeight: "600" }}>DIGITE O NOME DA CIDADE?</Text>
+                <Input
+                    containerStyle={{ width: "85%", marginTop: 20 }}
+                    style={{ color: "white" }}
+                    placeholder='Maceió'
+                    onChange={(text) => HandleChange(text)}
+                />
                 <Button
                     onPress={HandleSubmit}
                     containerStyle={{ width: 160, color: "#FFF", backgroundColor: "#FFF" }}
