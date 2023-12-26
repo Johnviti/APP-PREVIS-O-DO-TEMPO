@@ -1,4 +1,4 @@
-
+import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { Button, Input, Text } from '@rneui/themed';
 import React from 'react';
@@ -15,8 +15,12 @@ const Login = () => {
     };
     return (
         <>
+        <LinearGradient
+            colors={['#063e86', '#1372fc']}
+            style={styles.container}
+        >
             <StatusBar backgroundColor="black" />
-            <View style={styles.container}>
+            <View style={styles.content}>
                 <Image 
                 style={styles.logo}
                 source={require('../../../assets/logo.png')} />
@@ -30,12 +34,13 @@ const Login = () => {
 
                 <Button 
                 onPress={handleHome}
-                containerStyle={{width: 160}} 
+                containerStyle={{width: 160, backgroundColor: "#FFF", marginTop: 20}}
                 style={{marginTop: 20}}
                 title="Logar" 
                 type="outline" />
-                <Text h4 style={{ color: "white", marginTop: 100 }}>Não tem uma conta? <Text onPress={handleRegister} style={{ color: "#007AFF" }}>Cadastre-se</Text></Text>
+                <Text h4 style={{ color: "white", marginTop: 100 }}>Não tem uma conta? <Text onPress={handleRegister} style={{ color: "#fff" }}>Cadastre-se</Text></Text>
             </View>
+            </LinearGradient>
         </>
     );
 };
@@ -43,9 +48,12 @@ const Login = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#121212',
         paddingTop: 120,
         paddingBottom: 60,
+        alignItems: 'center',
+    },
+    content: {
+        width: '100%',
         alignItems: 'center',
     },
     logo: {
