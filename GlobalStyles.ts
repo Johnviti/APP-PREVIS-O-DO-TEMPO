@@ -5,7 +5,6 @@ export const FontFamily = {
   interMedium: "Inter-Medium",
   interRegular: "Inter-Regular",
 };
-/* font sizes */
 export const FontSize = {
   size_smi_6: 13,
   size_base: 16,
@@ -21,22 +20,19 @@ export const FontSize = {
   size_mid_3: 17,
   size_mini_3: 14,
 };
-/* Colors */
 export const Color = {
   corCinza: "#ccc",
-  colorLightskyblue_100: "#a0d8fd",
-  colorWhite: "#fff",
-  colorDodgerblue: "#3785fa",
-  colorGray: "#7d7d7d",
+  colorAzulClaro: "#a0d8fd",
+  colorBranco: "#fff",
+  colorAzul: "#3785fa",
+  colorCinza: "#7d7d7d",
 };
-/* Paddings */
 export const Padding = {
   p_13xl: 32,
   p_base: 16,
   p_120xl_1: 139,
   p_4xs_4: 8,
 };
-/* border radiuses */
 export const Border = {
   br_xl: 20,
   br_mini: 15,

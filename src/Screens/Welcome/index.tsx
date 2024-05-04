@@ -1,9 +1,11 @@
 import * as React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { Padding, Border, FontSize, Color, FontFamily } from "../../../GlobalStyles";
 import { useNavigation } from '@react-navigation/native';
+
+import * as animatable from 'react-native-animatable';
 
 const Welcome = () => {
 
@@ -15,158 +17,133 @@ const Welcome = () => {
       locations={[0, 1]}
       colors={["#438bf8", "#0066ff"]}
     >
-      <View style={[styles.buttons, styles.buttonsFlexBox]}>
-        <Text style={[styles.text, styles.textTypo]}
-         onPress={() => navigation.navigate('Login')}>
-        {`Login `}
-         </Text>
-      </View>
-      <View style={[styles.buttons1, styles.buttonsFlexBox]}>
-        <Text style={[styles.text1, styles.textTypo]}>Registrar</Text>
-      </View>
-      <Text
-        style={[styles.esqueceuSuaSenhaContainer, styles.homeChildPosition]}
-      >
-        <Text style={styles.esqueceuSuaSenha}>{`Esqueceu sua senha? `}</Text>
-        <Text style={styles.cliqueAqui}>Clique aqui!</Text>
-      </Text>
-      <Text style={styles.tempoprevisto}>
-        <Text style={styles.tempo}>Tempo</Text>
-        <Text style={styles.previsto}>Previsto</Text>
-      </Text>
-      <Image
-        style={[styles.homeChild, styles.homeChildPosition]}
-        contentFit="cover"
-        source={require("../../../assets/group-3.png")}
-      />
-      <View style={styles.termosEPolitica}>
-        <Text
-          style={[styles.polticaDePrivacidade, styles.termosDeUsoTypo]}
-        >{`Política de privacidade `}</Text>
-        <Text style={[styles.termosDeUso, styles.termosDeUsoTypo]}>
-          | Termos de uso
+    <animatable.View  animation="flipInY" style={styles.containerLogo}>
+        <Text style={styles.textLogo}>
+          <Text style={styles.tempo}>Tempo</Text>
+          <Text style={styles.previsto}>Previsto</Text>
         </Text>
+        <Image
+          style={[styles.logo]}
+          contentFit="cover"
+          source={require("../../../assets/group-3.png")}
+        />
+    </animatable.View>
+    <animatable.View delay={600} animation="fadeInUp" style={styles.buttons}>
+        <TouchableOpacity style={styles.buttonLogin}  onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.textLogin} >Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonRegister} onPress={() => navigation.navigate('Register')}>
+          <Text style={styles.textRegister}>Registrar</Text>
+        </TouchableOpacity>
+    </animatable.View>
+    <animatable.View delay={600} animation="fadeInUp" style={styles.esqueceuSuaSenhaContainer}>
+        <Text style={styles.esqueceuSenha}>Esqueceu sua senha?</Text>
+        <Text style={styles.cliqueAqui}>Clique aqui!</Text>
+    </animatable.View>
+        
+      <View style={styles.rodape}>
+        <Text style={styles.textoRodape}>Termos de uso | Política de privacidade</Text>
       </View>
     </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
-  buttonsFlexBox: {
-    paddingVertical: Padding.p_base,
-    paddingHorizontal: Padding.p_13xl,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    borderRadius: Border.br_mini,
-    left: 51,
-    right: 39,
-    position: "absolute",
+  home: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  textTypo: {
-    textAlign: "center",
-    fontSize: FontSize.size_base,
-  },
-  homeChildPosition: {
-    left: "50%",
-    position: "absolute",
-  },
-  termosDeUsoTypo: {
-    color: Color.corCinza,
-    fontFamily: FontFamily.arial,
-    fontSize: FontSize.size_smi_6,
-    top: 0,
-    textAlign: "left",
-    position: "absolute",
-  },
-  text: {
-    color: Color.colorWhite,
-    fontFamily: FontFamily.title3,
-    fontWeight: "700",
-    lineHeight: 16,
-    textAlign: "center",
-    fontSize: FontSize.size_base,
-  },
-  buttons: {
-    bottom: 248,
-    borderStyle: "solid",
-    borderColor: Color.colorWhite,
-    borderWidth: 2,
-  },
-  text1: {
-    color: "#0066ff",
-    fontFamily: FontFamily.title3,
-    fontWeight: "700",
-    lineHeight: 16,
-    textAlign: "center",
-    fontSize: FontSize.size_base,
-  },
-  buttons1: {
-    bottom: 187,
-    backgroundColor: Color.colorLightskyblue_100,
-  },
-  esqueceuSuaSenha: {
-    fontFamily: FontFamily.interRegular,
-    color: Color.colorWhite,
-  },
-  cliqueAqui: {
-    fontWeight: "500",
-    fontFamily: FontFamily.interMedium,
-    color: "#56bcff",
-  },
-  esqueceuSuaSenhaContainer: {
-    marginLeft: -122.5,
-    bottom: 150,
-    lineHeight: 24,
-    textAlign: "center",
-    fontSize: FontSize.size_base,
-    left: "50%",
-  },
-  tempo: {
-    color: Color.colorWhite,
-  },
-  previsto: {
-    color: Color.colorLightskyblue_100,
-  },
-  tempoprevisto: {
-    marginLeft: -91.5,
-    top: 163,
-    fontSize: 26,
-    lineHeight: 35,
-    textAlign: "left",
-    left: "50%",
-    fontFamily: FontFamily.title3,
-    fontWeight: "700",
-    position: "absolute",
-  },
-  homeChild: {
-    marginTop: -187,
-    marginLeft: -53.5,
-    top: "50%",
+  logo: {
     width: 120,
     height: 119,
   },
-  polticaDePrivacidade: {
-    left: 0,
+  textLogo: {
+    fontSize: 26,
+    lineHeight: 35,
+    fontWeight: "700",
+    marginBottom: 20,
   },
-  termosDeUso: {
-    left: 132,
+  tempo: {
+    color: Color.colorBranco,
   },
-  termosEPolitica: {
-    top: 773,
-    left: 74,
-    width: 222,
-    height: 15,
-    position: "absolute",
+  previsto: {
+    color: Color.colorAzulClaro,
   },
-  home: {
-    borderRadius: Border.br_xl,
-    flex: 1,
-    width: "100%",
-    height: 812,
-    overflow: "hidden",
-    backgroundColor: "transparent",
+  containerLogo: {
+    marginTop: 40,
+    alignItems: 'center',
+    paddingBottom: 80,
   },
+  rodape:{
+    flexDirection: 'row',
+    marginBottom: 20,
+    bottom: 0,
+    gap: 10,
+    position: 'absolute',
+  },
+  textoRodape: {
+    fontSize: 13,
+    color: Color.corCinza,
+  },
+  esqueceuSuaSenhaContainer: {
+    marginTop: 10,
+    flexDirection: 'row',
+    gap: 5,
+  },
+  esqueceuSenha:{
+    color: Color.colorBranco,
+    fontSize: 13,
+    fontWeight: '500',
+    fontFamily: FontFamily.interMedium,
+  },
+  cliqueAqui: {
+    fontSize: 13,
+    fontWeight: "500",
+    fontFamily: FontFamily.interMedium,
+    color: Color.colorAzulClaro,
+  },
+  buttons: {
+    flexDirection: 'column',
+    gap: 13,
+    width: 285,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20,
+  },
+  buttonLogin: {
+    paddingHorizontal: 32,
+    paddingVertical: 16,
+    width: '100%',
+    textAlign: 'center',
+    borderRadius: 15,
+    borderColor: Color.colorBranco,
+    borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textLogin: {
+    color: Color.colorBranco,
+    fontSize: 16,
+    fontWeight: "700",
+  },
+  buttonRegister: {
+    paddingHorizontal: 32,
+    paddingVertical: 16,
+    width: '100%',
+    textAlign: 'center',
+    borderRadius: 15,
+    backgroundColor: Color.colorAzulClaro,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textRegister: {
+    color: Color.colorAzul,
+    fontSize: 16,
+    fontWeight: "700",
+  }
 });
 
 export default Welcome;

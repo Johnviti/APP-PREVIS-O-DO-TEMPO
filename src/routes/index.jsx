@@ -1,57 +1,37 @@
-const Stack = createNativeStackNavigator();
 import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { useFonts } from "expo-font";
+const Stack = createNativeStackNavigator();
+
 import Login from '../Screens/Login';
 import Register from '../Screens/Register';
 import Welcome from '../Screens/Welcome';
 import Home from '../Screens/Home';
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Text, Pressable, TouchableOpacity } from "react-native";
 
 const Routes = () => {
-  const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
-
-  const [fontsLoaded, error] = useFonts({
-    "Inter-Regular": require("../../assets/fonts/Inter-Regular.ttf"),
-    "Inter-Medium": require("../../assets/fonts/Inter-Medium.ttf"),
-    "Inter-Bold": require("../../assets/fonts/Inter-Bold.ttf"),
-  });
-
-  if (!fontsLoaded && !error) {
-    return null;
-  }
-
   return (
-    <>
-      <NavigationContainer>
-        {hideSplashScreen ? (
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen
-              name="Welcome"
-              component={Welcome}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Login"
-              component={Login}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Register"
-              component={Register}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Home"
-              component={Home}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
-        ) : null}
-      </NavigationContainer>
-    </>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name="Welcome"
+        component={Welcome}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
   );
 };
 export default Routes;
