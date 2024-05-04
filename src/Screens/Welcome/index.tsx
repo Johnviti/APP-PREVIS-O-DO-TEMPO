@@ -3,8 +3,12 @@ import { Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { Padding, Border, FontSize, Color, FontFamily } from "../../../GlobalStyles";
+import { useNavigation } from '@react-navigation/native';
 
-const Home = () => {
+const Welcome = () => {
+
+  const navigation = useNavigation();
+
   return (
     <LinearGradient
       style={styles.home}
@@ -12,7 +16,10 @@ const Home = () => {
       colors={["#438bf8", "#0066ff"]}
     >
       <View style={[styles.buttons, styles.buttonsFlexBox]}>
-        <Text style={[styles.text, styles.textTypo]}>{`Login `}</Text>
+        <Text style={[styles.text, styles.textTypo]}
+         onPress={() => navigation.navigate('Login')}>
+        {`Login `}
+         </Text>
       </View>
       <View style={[styles.buttons1, styles.buttonsFlexBox]}>
         <Text style={[styles.text1, styles.textTypo]}>Registrar</Text>
@@ -162,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default Welcome;
