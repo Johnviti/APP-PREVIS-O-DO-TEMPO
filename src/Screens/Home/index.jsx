@@ -4,6 +4,7 @@ import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { FontFamily, Color, Border, FontSize } from "../../../GlobalStyles";
 import Toast from 'react-native-toast-message';
+import { Button } from 'react-native-elements';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { useEffect, useState } from 'react';
@@ -15,6 +16,8 @@ const Home = () => {
   const [daysweather, setDaysweather] = useState(null);
   const [cidade, setCidade] = useState('Maceió');
 
+  const [cidadeSelecionada, setCidadeSelecionada] = useState('Maceió');
+
   useEffect(() => {
       HandleSubmit();
   }, []);
@@ -24,6 +27,7 @@ const Home = () => {
   }
 
   const HandleSubmit = (e) => {
+    setCidadeSelecionada(cidade);
     fetch(`http://api.weatherapi.com/v1/current.json?key=560ac4f5cf1f41168a0195626232312&q=${cidade}&lang=pt`)
         .then((response) => {
             Toast.show({
@@ -35,6 +39,7 @@ const Home = () => {
         })
         .then((data) => {
             setWeather(data);
+            console.log(data);
         })
         .catch((error) => {
             Toast.show({
@@ -59,6 +64,10 @@ const Home = () => {
             console.error(error);
         });
     }
+    const currentDate = new Date();
+    const formatedDay = format(currentDate, 'dd', { locale: ptBR });
+    const formatedMonth = format(currentDate, 'MMMM', { locale: ptBR });
+
 
   return (
     <LinearGradient
@@ -67,7 +76,7 @@ const Home = () => {
     colors={["#438bf8", "#0066ff"]}
   >
     <View style={styles.containerInput}>
-      <Text style={styles.data}>{format(new Date(day.date), 'dd', { locale: ptBR })}</Text>
+      <Text style={styles.data}>{formatedDay} de {formatedMonth}</Text>
       <View style={styles.input}>
                 <Image
                   style={styles.icon}
@@ -79,18 +88,19 @@ const Home = () => {
                  placeholder="Cidade" 
                  onChange={(text) => HandleChange(text)}
                  />
-                 <Image
-                  style={styles.icon}
-                  contentFit="cover"
-                  source={require("../../../assets/group.png")}
-                  onPress={HandleSubmit}
+                 <Button
+                    onPress={HandleSubmit}
+                    containerStyle={{ width: 10, color: "#FFF", backgroundColor: "#FFF" }}
+                    style={styles.button}
+                    title="Pesquisar"
+                    type="outline"
                 />
       </View>
     </View>
     <View style={styles.containerInformacao}>
     {weather && (
         <>
-        <Text style={styles.tempo}>{weather.current.temp_c}C</Text>
+        <Text style={styles.tempo}>{weather.current.temp_c}ºC</Text>
         <View style={styles.containerDados}>
           <Image
             style={styles.image}
@@ -99,8 +109,8 @@ const Home = () => {
           />
           <View style={styles.containerDado}>
             <View>
-              <Text style={styles.tituloDado}>Umidade</Text>
-              <Text style={styles.dadosGraus}>25%</Text>
+              <Text style={styles.tituloDado}>Cidade</Text>
+              <Text style={styles.dadosGraus}>{cidadeSelecionada}</Text>
             </View>
             <View>
               <Text style={styles.tituloDado}>Clima</Text>
@@ -121,14 +131,17 @@ const Home = () => {
               <LinearGradient
               style={styles.card}
               locations={[0, 1]}
-              colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
+              colors={formatedDay === format(new Date(day.date), 'dd', { locale: ptBR }) ? ["#2F91F5", "#37CAF5"] : ["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}
+              >
+                
+                {/* format(currentDate, 'dd', { locale: ptBR }) */}
                 <Text style={styles.tempoCard}>{day.day.avgtemp_c}°C</Text>
                 <Image 
                   style={styles.weather}
                   contentFit="cover"
                   source={require("../../../assets/sunn.png")}
                 />
-                <Text style={styles.dataCard}>{format(new Date(day.date), 'dd', { locale: ptBR })}</Text>
+                <Text style={styles.dataCard}>{format(new Date(day.date), 'EEE', { locale: ptBR })}</Text>
               </LinearGradient>
           ))}
       </ScrollView>
@@ -188,18 +201,18 @@ const Home = () => {
                   Cidade
                 </Text>
                 <Text style={styles.cidade}>
-                  Recife
+                  Rio de Janeiro
                 </Text>
               </View>
             </View>
             <View style={styles.containerLinha}>
               <View style={styles.containerColumn}>
                 <Text style={styles.tituloPequeno} >Temp</Text>
-                <Text style={styles.textPequeno}>20°C</Text>
+                <Text style={styles.textPequeno}>28°C</Text>
               </View>
               <View style={styles.containerColumn}>
                 <Text style={styles.tituloPequeno}>Umidade</Text>
-                <Text style={styles.textPequeno}>25%</Text>
+                <Text style={styles.textPequeno}>27%</Text>
               </View>
             </View>
         </LinearGradient>
@@ -225,6 +238,7 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   inputCidade: {
+    width: "100%",
     fontSize: 16,
     color: Color.corCinza,
     fontFamily: FontFamily.interMedium,
@@ -316,6 +330,12 @@ const styles = StyleSheet.create({
     height: 22,
     marginLeft: 8,
   },
+  iconSearch: {
+    position: 'absolute',
+    width: 18,
+    height: 22,
+    right: 10,
+  },
   data:{
     fontSize: 16,
     color: Color.colorAzulClaro,
@@ -356,10 +376,11 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
   },
   card: {
-    width: 67,
+    width: 90,
     justifyContent: "space-between",
     alignItems: "center",
     borderRadius: 10,
+    marginLeft: 10,
     padding: 10,
   },
   tempoCard: {
