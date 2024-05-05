@@ -2,7 +2,6 @@
 export const FontFamily = {
   arial: "Arial",
   title3: "Inter-Bold",
-  interMedium: "Inter-Medium",
   interRegular: "Inter-Regular",
 };
 export const FontSize = {

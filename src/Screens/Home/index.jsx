@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
     width: "100%",
     fontSize: 16,
     color: Color.corCinza,
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     fontWeight: "500",
     paddingLeft: 10,
   },
@@ -301,13 +301,13 @@ const styles = StyleSheet.create({
   tituloPequeno: {
     fontSize: 10,
     color: Color.colorBranco,
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     fontWeight: "500",
   },
   textPequeno: {
     fontSize: 15,
     color: Color.colorBranco,
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     fontWeight: "700",
   },
   image: {
@@ -339,7 +339,7 @@ const styles = StyleSheet.create({
   data:{
     fontSize: 16,
     color: Color.colorAzulClaro,
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     fontWeight: "700",
     paddingBottom: 15,
   },
@@ -353,25 +353,25 @@ const styles = StyleSheet.create({
   dadosClima: {
     fontSize: 16,
     color: Color.colorBranco,
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     fontWeight: "700",
   },
   dadosGraus: {
     fontSize: 24,
     color: Color.colorBranco,
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     fontWeight: "700",
   },
   tituloDado: {
     fontSize: 16,
     color: Color.colorBranco,
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     fontWeight: "500",
   },
   tituloText: {
     fontSize: 14,
     color: Color.colorBranco,
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     fontWeight: "700",
     paddingBottom: 15,
   },
@@ -386,14 +386,14 @@ const styles = StyleSheet.create({
   tempoCard: {
     fontSize: 16,
     color: Color.colorBranco,
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     fontWeight: "700",
     paddingBottom: 5,
   },
   tituloCidade: {
     fontSize: 14,
     color: Color.colorBranco,
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     fontWeight: "500",
     width: "100%",
   },
@@ -405,7 +405,7 @@ const styles = StyleSheet.create({
   cidade: {
     fontSize: 17.5,
     color: Color.colorBranco,
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     fontWeight: "700",
   },
   weather: {
@@ -415,7 +415,7 @@ const styles = StyleSheet.create({
   dataCard: {
     fontSize: 12,
     color: Color.colorBranco,
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     fontWeight: "700",
     paddingTop: 5,
   },

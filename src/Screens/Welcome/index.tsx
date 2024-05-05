@@ -35,9 +35,6 @@ const Welcome = () => {
         <TouchableOpacity style={styles.buttonRegister} onPress={() => navigation.navigate('Register')}>
           <Text style={styles.textRegister}>CADASTRAR</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonRegister} onPress={() => navigation.navigate('Home')}>
-          <Text style={styles.textRegister}>HOME</Text>
-        </TouchableOpacity>
     </animatable.View>
     <animatable.View delay={600} animation="fadeInUp" style={styles.esqueceuSuaSenhaContainer}>
         <Text style={styles.esqueceuSenha}>Esqueceu sua senha?</Text>
@@ -100,12 +97,12 @@ const styles = StyleSheet.create({
     color: Color.colorBranco,
     fontSize: 13,
     fontWeight: '500',
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
   },
   cliqueAqui: {
     fontSize: 13,
     fontWeight: "500",
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
     color: Color.colorAzulClaro,
   },
   buttons: {

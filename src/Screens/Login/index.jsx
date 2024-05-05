@@ -90,9 +90,9 @@ começar?`}</Text>
 const styles = StyleSheet.create({
   home: {
     flex: 1,
+    position: 'relative',
   },
   container: {
-    flex: 1,
     backgroundColor: Color.colorBranco,
     width: "100%",
     height: "67%",
@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
   },
   containerLogo: {
     flex: 2,
@@ -218,13 +217,13 @@ const styles = StyleSheet.create({
     color: Color.colorAzul,
     fontSize: 12,
     fontWeight: '700',
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
   },
   lembraMe: {
     color: Color.colorAzul,
     fontSize: 12,
     fontWeight: '700',
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.interRegular,
   },
   buttons: {
     flexDirection: 'column',
