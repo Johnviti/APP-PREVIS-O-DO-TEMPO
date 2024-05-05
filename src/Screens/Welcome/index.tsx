@@ -30,10 +30,13 @@ const Welcome = () => {
     </animatable.View>
     <animatable.View delay={600} animation="fadeInUp" style={styles.buttons}>
         <TouchableOpacity style={styles.buttonLogin}  onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.textLogin} >Login</Text>
+          <Text style={styles.textLogin} >ENTRAR</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonRegister} onPress={() => navigation.navigate('Register')}>
-          <Text style={styles.textRegister}>Registrar</Text>
+          <Text style={styles.textRegister}>CADASTRAR</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonRegister} onPress={() => navigation.navigate('Home')}>
+          <Text style={styles.textRegister}>HOME</Text>
         </TouchableOpacity>
     </animatable.View>
     <animatable.View delay={600} animation="fadeInUp" style={styles.esqueceuSuaSenhaContainer}>

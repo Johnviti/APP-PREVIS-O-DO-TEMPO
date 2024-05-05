@@ -26,6 +26,7 @@ export const Color = {
   colorBranco: "#fff",
   colorAzul: "#3785fa",
   colorCinza: "#7d7d7d",
+  colorPreto: "#000",
 };
 export const Padding = {
   p_13xl: 32,
