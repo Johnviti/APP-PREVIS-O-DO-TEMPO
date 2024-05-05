@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import * as animatable from 'react-native-animatable';
 
-const Registre = () => {
+const Register = () => {
 
   const navigation = useNavigation();
 
@@ -275,4 +275,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Registre;
+export default Register;

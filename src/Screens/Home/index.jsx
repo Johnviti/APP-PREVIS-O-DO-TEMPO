@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, TextInput } from "react-native";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { FontFamily, Color, Border, FontSize } from "../../../GlobalStyles";
@@ -7,541 +7,396 @@ import { FontFamily, Color, Border, FontSize } from "../../../GlobalStyles";
 const Registre1 = () => {
   return (
     <LinearGradient
-      style={styles.registre}
-      locations={[0, 1]}
-      colors={["#438bf8", "#0066ff"]}
-    >
-      <Text style={[styles.deAbril, styles.c6Typo]}>24 de Abril</Text>
-      <Text style={styles.c}>18°C</Text>
-      <View style={styles.groupParent}>
+    style={styles.home}
+    locations={[0, 1]}
+    colors={["#438bf8", "#0066ff"]}
+  >
+    <View style={styles.containerInput}>
+      <Text style={styles.data}>24 de abril</Text>
+      <View style={styles.input}>
+                <Image
+                  style={styles.icon}
+                  contentFit="cover"
+                  source={require("../../../assets/group.png")}
+                />
+                <TextInput style={styles.inputCidade} placeholder="Cidade" />
+      </View>
+    </View>
+    <View style={styles.containerInformacao}>
+      <Text style={styles.tempo} >18ºC</Text>
+      <View style={styles.containerDados}>
         <Image
-          style={[styles.groupIcon, styles.groupIconPosition]}
+          style={styles.image}
           contentFit="cover"
-          source={require("../../../assets/group.png")}
+          source={require("../../../assets/time.png")}
         />
-        <Text style={[styles.macei, styles.c6Typo]}>Maceió</Text>
-      </View>
-      <View style={styles.semanalmenteParent}>
-        <Text style={styles.semanalmente}>Semanalmente</Text>
-        <View style={[styles.dias, styles.diasFlexBox]}>
-          <LinearGradient
-            style={styles.cGroupLayout}
-            locations={[0, 1]}
-            colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}
-          >
-            <Text style={[styles.c1, styles.c1Typo]}>18°C</Text>
-            <Text style={[styles.text, styles.c1Typo]}>24/04</Text>
-            <Image
-              style={[styles.dWeatherForecastIconsSetW, styles.weatherPosition]}
-              contentFit="cover"
-              source={require("../../../assets/3dweatherforecasticonssetwhitebackground-2.png")}
-            />
-          </LinearGradient>
-          <LinearGradient
-            style={[styles.cGroup, styles.cGroupLayout]}
-            locations={[0, 1]}
-            colors={["#2f91f5", "#37caf5"]}
-          >
-            <Text style={[styles.c1, styles.c1Typo]}>18°C</Text>
-            <Text style={[styles.text, styles.c1Typo]}>24/04</Text>
-            <Image
-              style={[
-                styles.dWeatherForecastIconsSetW1,
-                styles.desenvolvidoPorJohnPosition,
-              ]}
-              contentFit="cover"
-              source={require("../../../assets/3dweatherforecasticonssetwhitebackground-3.png")}
-            />
-          </LinearGradient>
-          <LinearGradient
-            style={[styles.cContainer, styles.cGroupLayout]}
-            locations={[0, 1]}
-            colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}
-          >
-            <Text style={[styles.c1, styles.c1Typo]}>18°C</Text>
-            <Text style={[styles.text, styles.c1Typo]}>24/04</Text>
-            <Image
-              style={[
-                styles.dWeatherForecastIconsSetW2,
-                styles.weatherPosition,
-              ]}
-              contentFit="cover"
-              source={require("../../../assets/3dweatherforecasticonssetwhitebackground-21.png")}
-            />
-          </LinearGradient>
-          <LinearGradient
-            style={[styles.cContainer, styles.cGroupLayout]}
-            locations={[0, 1]}
-            colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}
-          >
-            <Text style={[styles.c1, styles.c1Typo]}>18°C</Text>
-            <Text style={[styles.text, styles.c1Typo]}>24/04</Text>
-            <Image
-              style={[
-                styles.dWeatherForecastIconsSetW1,
-                styles.desenvolvidoPorJohnPosition,
-              ]}
-              contentFit="cover"
-              source={require("../../../assets/3dweatherforecasticonssetwhitebackground-3.png")}
-            />
-          </LinearGradient>
-          <LinearGradient
-            style={[styles.cContainer, styles.cGroupLayout]}
-            locations={[0, 1]}
-            colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}
-          >
-            <Text style={[styles.c1, styles.c1Typo]}>18°C</Text>
-            <Text style={[styles.text, styles.c1Typo]}>24/04</Text>
-            <Image
-              style={[
-                styles.dWeatherForecastIconsSetW1,
-                styles.desenvolvidoPorJohnPosition,
-              ]}
-              contentFit="cover"
-              source={require("../../../assets/3dweatherforecasticonssetwhitebackground-3.png")}
-            />
-          </LinearGradient>
+        <View style={styles.containerDado}>
+          <View>
+            <Text style={styles.tituloDado}>Umidade</Text>
+            <Text style={styles.dadosGraus}>25%</Text>
+          </View>
+          <View>
+            <Text style={styles.tituloDado}>Clima</Text>
+            <Text style={styles.dadosClima}>Céu Limpo</Text>
+          </View>
         </View>
       </View>
-      <View style={[styles.frameParent, styles.frameParentLayout]}>
-        <View style={[styles.climaParent, styles.parentPosition]}>
-          <Text style={[styles.clima, styles.climaLayout]}>Clima</Text>
-          <Text style={[styles.cuLimpo, styles.climaLayout]}>Céu Limpo</Text>
-        </View>
-        <View style={[styles.umidadeParent, styles.parentPosition]}>
-          <Text style={[styles.clima, styles.climaLayout]}>Umidade</Text>
-          <Text style={[styles.text5, styles.climaLayout]}>25%</Text>
-        </View>
-        <Image
-          style={[styles.dWeatherForecastIconsSetW5, styles.frameParentLayout]}
-          contentFit="cover"
-          source={require("../../../assets/3dweatherforecasticonssetwhitebackground-22.png")}
-        />
+    </View>
+    <View style={styles.containerSemanalmente}>
+      <Text style={styles.tituloText}>Semanalmente</Text>
+      <View style={styles.containerCard}>
+        <LinearGradient
+        style={styles.card}
+        locations={[0, 1]}
+        colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
+          <Text style={styles.tempoCard}>18ºC</Text>
+          <Image 
+            style={styles.weather}
+            contentFit="cover"
+            source={require("../../../assets/sunn.png")}
+          />
+          <Text style={styles.dataCard}>05/05</Text>
+        </LinearGradient>
+        <LinearGradient
+        style={styles.card}
+        locations={[0, 1]}
+        colors={["#2F91F5", "#37CAF5"]}>
+          <Text style={styles.tempoCard}>18ºC</Text>
+          <Image 
+            style={styles.weather}
+            contentFit="cover"
+            source={require("../../../assets/sunn.png")}
+          />
+          <Text style={styles.dataCard}>05/05</Text>
+        </LinearGradient>
+        <LinearGradient
+        style={styles.card}
+        locations={[0, 1]}
+        colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
+          <Text style={styles.tempoCard}>18ºC</Text>
+          <Image 
+            style={styles.weather}
+            contentFit="cover"
+            source={require("../../../assets/sunn.png")}
+          />
+          <Text style={styles.dataCard}>05/05</Text>
+        </LinearGradient>
+        <LinearGradient
+        style={styles.card}
+        locations={[0, 1]}
+        colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
+          <Text style={styles.tempoCard}>18ºC</Text>
+          <Image 
+            style={styles.weather}
+            contentFit="cover"
+            source={require("../../../assets/sunn.png")}
+          />
+          <Text style={styles.dataCard}>05/05</Text>
+        </LinearGradient>
+        <LinearGradient
+        style={styles.card}
+        locations={[0, 1]}
+        colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
+          <Text style={styles.tempoCard}>18ºC</Text>
+          <Image 
+            style={styles.weather}
+            contentFit="cover"
+            source={require("../../../assets/sunn.png")}
+          />
+          <Text style={styles.dataCard}>05/05</Text>
+        </LinearGradient>
+        <LinearGradient
+        style={styles.card}
+        locations={[0, 1]}
+        colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
+          <Text style={styles.tempoCard}>18ºC</Text>
+          <Image 
+            style={styles.weather}
+            contentFit="cover"
+            source={require("../../../assets/sunn.png")}
+          />
+          <Text style={styles.dataCard}>05/05</Text>
+        </LinearGradient>
+        <LinearGradient
+        style={styles.card}
+        locations={[0, 1]}
+        colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
+          <Text style={styles.tempoCard}>18ºC</Text>
+          <Image 
+            style={styles.weather}
+            contentFit="cover"
+            source={require("../../../assets/sunn.png")}
+          />
+          <Text style={styles.dataCard}>05/05</Text>
+        </LinearGradient>
       </View>
-      <Text
-        style={[styles.desenvolvidoPorJohn, styles.desenvolvidoPorJohnPosition]}
-      >
-        Desenvolvido por John Amorim
-      </Text>
-      <View style={styles.outrasCidadesParent}>
-        <Text style={styles.semanalmente}>Outras Cidades</Text>
-        <Text style={[styles.visualizarTodas, styles.cidadeTypo]}>
-          Visualizar todas
-        </Text>
-        <View style={[styles.dias, styles.diasFlexBox]}>
-          <LinearGradient
-            style={styles.groupLayout}
+    </View>
+    <View style={styles.containerClimaCidade}>
+      <View style={styles.titulos}>
+        <Text style={styles.tituloText}>Outras Cidades</Text>
+        <Text style={styles.tituloText}>Visualizar todas</Text>
+      </View >
+      <View style={styles.containerLinha}>
+        <LinearGradient
+            style={styles.containerCardCidade}
             locations={[0, 1]}
             colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}
           >
-            <View style={styles.groupWrapper}>
-              <View style={[styles.groupFrame, styles.groupFramePosition]}>
-                <View style={[styles.groupFrame, styles.groupFramePosition]}>
-                  <Image
-                    style={[
-                      styles.dWeatherForecastIconsSetW6,
-                      styles.groupFramePosition,
-                    ]}
-                    contentFit="cover"
-                    source={require("../../../assets/3dweatherforecasticonssetwhitebackground-31.png")}
-                  />
-                  <Text style={[styles.recife, styles.recifePosition]}>
-                    Recife
-                  </Text>
-                  <Text style={[styles.cidade, styles.recifePosition]}>
-                    Cidade
-                  </Text>
-                </View>
+            <View style={styles.containerTempoCidade}>
+              <Image
+                style={styles.imagemTempoCidade}
+                contentFit="cover"
+                source={require("../../../assets/3dweatherforecasticonssetwhitebackground-31.png")}
+              />
+              <View style={styles.containerColumn}>
+                <Text style={styles.tituloCidade}>
+                  Cidade
+                </Text>
+                <Text style={styles.cidade}>
+                  Recife
+                </Text>
               </View>
             </View>
-            <View style={[styles.frameView, styles.diasFlexBox]}>
-              <View style={styles.groupView}>
-                <Text style={[styles.c6, styles.c6Position]}>20°C</Text>
-                <Text style={[styles.temp, styles.c6Position]}>Temp</Text>
+            <View style={styles.containerLinha}>
+              <View style={styles.containerColumn}>
+                <Text style={styles.tituloPequeno} >Temp</Text>
+                <Text style={styles.textPequeno}>20°C</Text>
               </View>
-              <View style={styles.parent}>
-                <Text style={[styles.c6, styles.c6Position]}>25%</Text>
-                <Text style={[styles.temp, styles.c6Position]}>Umidade</Text>
+              <View style={styles.containerColumn}>
+                <Text style={styles.tituloPequeno}>Umidade</Text>
+                <Text style={styles.textPequeno}>25%</Text>
               </View>
             </View>
-          </LinearGradient>
-          <LinearGradient
-            style={[styles.groupParent1, styles.groupLayout]}
+        </LinearGradient>
+        <LinearGradient
+            style={styles.containerCardCidade}
             locations={[0, 1]}
             colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}
           >
-            <View style={styles.groupWrapper}>
-              <View style={[styles.groupFrame, styles.groupFramePosition]}>
-                <View style={[styles.groupFrame, styles.groupFramePosition]}>
-                  <Image
-                    style={[
-                      styles.dWeatherForecastIconsSetW6,
-                      styles.groupFramePosition,
-                    ]}
-                    contentFit="cover"
-                    source={require("../../../assets/3dweatherforecasticonssetwhitebackground-31.png")}
-                  />
-                  <Text style={[styles.recife, styles.recifePosition]}>
-                    Recife
-                  </Text>
-                  <Text style={[styles.cidade, styles.recifePosition]}>
-                    Cidade
-                  </Text>
-                </View>
+            <View style={styles.containerTempoCidade}>
+              <Image
+                style={styles.imagemTempoCidade}
+                contentFit="cover"
+                source={require("../../../assets/3dweatherforecasticonssetwhitebackground-31.png")}
+              />
+              <View style={styles.containerColumn}>
+                <Text style={styles.tituloCidade}>
+                  Cidade
+                </Text>
+                <Text style={styles.cidade}>
+                  Recife
+                </Text>
               </View>
             </View>
-            <View style={[styles.frameView, styles.diasFlexBox]}>
-              <View style={styles.groupView}>
-                <Text style={[styles.c6, styles.c6Position]}>20°C</Text>
-                <Text style={[styles.temp, styles.c6Position]}>Temp</Text>
+            <View style={styles.containerLinha}>
+              <View style={styles.containerColumn}>
+                <Text style={styles.tituloPequeno} >Temp</Text>
+                <Text style={styles.textPequeno}>20°C</Text>
               </View>
-              <View style={styles.parent}>
-                <Text style={[styles.c6, styles.c6Position]}>25%</Text>
-                <Text style={[styles.temp, styles.c6Position]}>Umidade</Text>
+              <View style={styles.containerColumn}>
+                <Text style={styles.tituloPequeno}>Umidade</Text>
+                <Text style={styles.textPequeno}>25%</Text>
               </View>
             </View>
-          </LinearGradient>
-        </View>
+        </LinearGradient>
       </View>
-      <View style={[styles.icsharpInfo, styles.groupIconPosition]} />
-    </LinearGradient>
+    </View>
+  </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
-  c6Typo: {
-    fontFamily: FontFamily.title3,
-    fontWeight: "700",
-  },
-  groupIconPosition: {
-    overflow: "hidden",
-    position: "absolute",
-  },
-  diasFlexBox: {
-    flexDirection: "row",
-    position: "absolute",
-  },
-  c1Typo: {
-    lineHeight: 6,
-    color: Color.colorWhite,
-    textAlign: "left",
-    fontFamily: FontFamily.title3,
-    fontWeight: "700",
-    position: "absolute",
-  },
-  weatherPosition: {
-    height: 37,
-    top: 25,
-    left: 15,
-    position: "absolute",
-  },
-  cGroupLayout: {
-    height: 87,
-    width: 67,
-    borderRadius: Border.br_3xs,
-    backgroundColor: "transparent",
-    overflow: "hidden",
-  },
-  desenvolvidoPorJohnPosition: {
-    left: "50%",
-    position: "absolute",
-  },
-  frameParentLayout: {
-    height: 161,
-    position: "absolute",
-  },
-  parentPosition: {
-    left: 183,
-    position: "absolute",
-  },
-  climaLayout: {
-    lineHeight: 12,
-    color: Color.colorWhite,
-    textAlign: "left",
-  },
-  cidadeTypo: {
-    fontSize: FontSize.size_sm,
-    top: 0,
-  },
-  groupFramePosition: {
-    marginLeft: -54.5,
-    marginTop: -20.75,
-    height: 42,
-    left: "50%",
-    top: "50%",
-    position: "absolute",
-  },
-  recifePosition: {
-    lineHeight: 13,
-    left: 55,
-    color: Color.colorWhite,
-    textAlign: "left",
-    position: "absolute",
-  },
-  c6Position: {
-    lineHeight: 8,
-    left: 0,
-    color: Color.colorWhite,
-    textAlign: "left",
-    position: "absolute",
-  },
-  groupLayout: {
-    height: 115,
-    width: 191,
-    backgroundColor: "transparent",
-    overflow: "hidden",
-    borderRadius: Border.br_xl,
-  },
-  deAbril: {
-    top: 43,
-    color: Color.colorLightskyblue_100,
-    textAlign: "left",
-    lineHeight: 32,
-    fontWeight: "700",
-    fontSize: FontSize.size_base,
-    position: "absolute",
-    left: 25,
-  },
-  c: {
-    top: 172,
-    fontSize: 72,
-    width: 169,
-    height: 57,
+  home: {
+    flex: 1,
     alignItems: "center",
-    display: "flex",
-    color: Color.colorWhite,
-    textAlign: "left",
-    fontFamily: FontFamily.title3,
-    fontWeight: "700",
-    lineHeight: 32,
-    left: 25,
-    position: "absolute",
   },
-  groupIcon: {
-    height: "47.83%",
-    width: "5.08%",
-    top: "26.09%",
-    right: "90.62%",
-    bottom: "26.09%",
-    left: "4.31%",
-    maxWidth: "100%",
-    maxHeight: "100%",
-    position: "absolute",
+  containerInput: {
+    paddingTop: 40,
   },
-  macei: {
-    top: 7,
-    left: 38,
+  containerInformacao: {
+    flexDirection: "column",
+    paddingTop: 40,
+    justifyContent: "space-between",
+    alignItems: "left",
+    width: "80%",
+  },
+  inputCidade: {
+    fontSize: 16,
     color: Color.corCinza,
-    textAlign: "left",
-    lineHeight: 32,
-    fontWeight: "700",
-    fontSize: FontSize.size_base,
-    position: "absolute",
+    fontFamily: FontFamily.interMedium,
+    fontWeight: "500",
+    paddingLeft: 10,
   },
-  groupParent: {
-    top: 82,
-    backgroundColor: Color.colorWhite,
-    width: 325,
-    height: 46,
-    borderRadius: Border.br_3xs,
-    left: 25,
-    position: "absolute",
-    overflow: "hidden",
-  },
-  semanalmente: {
-    width: 191,
-    fontSize: FontSize.size_sm,
-    left: 0,
-    top: 0,
-    color: Color.colorWhite,
-    textAlign: "left",
-    fontFamily: FontFamily.title3,
-    fontWeight: "700",
-    lineHeight: 32,
-    position: "absolute",
-  },
-  c1: {
-    top: 8,
-    fontSize: FontSize.size_mini_3,
-    width: 34,
-    height: 11,
-    left: 15,
-    lineHeight: 6,
+  containerDados: {
+    flexDirection: "row",
+    justifyContent: "left",
     alignItems: "center",
-    display: "flex",
+    gap: 30,
   },
-  text: {
-    top: 69,
-    left: 13,
-    fontSize: FontSize.size_xs,
+  containerDado:{
+    height: 161,
+    flexDirection: "column",
+    justifyContent: 'space-around',
+    alignItems: "left",
   },
-  dWeatherForecastIconsSetW: {
-    width: 37,
-    height: 37,
-    top: 25,
+  containerSemanalmente: {
+    flexDirection: "column",
+    paddingTop: 20,
+    paddingBottom: 30,
+    alignItems: "left",
+    width: "80%",
   },
-  dWeatherForecastIconsSetW1: {
-    marginTop: -18.5,
-    marginLeft: -18.5,
-    top: "50%",
-    left: "50%",
-    height: 37,
-    width: 37,
+  containerClimaCidade:{
+    flexDirection: "column",
+    alignItems: "left",
+    width: "80%",
   },
-  cGroup: {
-    borderStyle: "solid",
-    borderColor: "#74acf5",
+  containerCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 14,
+  },
+  containerCardCidade: {
+    width: 190,
+    height: 120,
+    borderRadius: 20,
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 8,
+  },
+  containerTempoCidade: {
+    paddingTop: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 14,
+  },
+  containerColumn: {
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  containerLinha: {
+    flexDirection: "row",
+    paddingBottom: 10,
+    gap: 14,
+  },
+  tituloPequeno: {
+    fontSize: 10,
+    color: Color.colorBranco,
+    fontFamily: FontFamily.interMedium,
+    fontWeight: "500",
+  },
+  textPequeno: {
+    fontSize: 15,
+    color: Color.colorBranco,
+    fontFamily: FontFamily.interMedium,
+    fontWeight: "700",
+  },
+  image: {
+    width: 160,
+    height: 160,
+    objectFit: "cover",
+  },
+  input: {
+    width: 325,
+    height: 40,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: Color.colorBranco,
     borderWidth: 1,
-    marginLeft: 14,
+    borderRadius: 7.5,
+    borderColor: Color.corCinza,
   },
-  dWeatherForecastIconsSetW2: {
-    width: 38,
-    height: 37,
-    top: 25,
+  icon: {
+    width: 18,
+    height: 22,
+    marginLeft: 8,
   },
-  cContainer: {
-    marginLeft: 14,
+  data:{
+    fontSize: 16,
+    color: Color.colorAzulClaro,
+    fontFamily: FontFamily.interMedium,
+    fontWeight: "700",
+    paddingBottom: 15,
   },
-  dias: {
-    top: 40,
-    left: 0,
-  },
-  semanalmenteParent: {
-    top: 435,
-    width: 391,
-    height: 127,
-    left: 25,
-    position: "absolute",
-  },
-  clima: {
-    fontFamily: FontFamily.interRegular,
-    fontSize: FontSize.size_base,
-    lineHeight: 12,
-  },
-  cuLimpo: {
-    marginTop: 11,
+  tempo: {
+    fontSize: 72,
+    color: Color.colorBranco,
     fontFamily: FontFamily.title3,
     fontWeight: "700",
-    fontSize: FontSize.size_base,
-    lineHeight: 12,
+    paddingBottom: 15,
   },
-  climaParent: {
-    top: 98,
-  },
-  text5: {
-    fontSize: FontSize.title3_size,
-    marginTop: 16,
-    fontFamily: FontFamily.title3,
+  dadosClima: {
+    fontSize: 16,
+    color: Color.colorBranco,
+    fontFamily: FontFamily.interMedium,
     fontWeight: "700",
   },
-  umidadeParent: {
-    top: 28,
-  },
-  dWeatherForecastIconsSetW5: {
-    width: 159,
-    left: 0,
-    top: 0,
-  },
-  frameParent: {
-    top: 242,
-    left: 43,
-    width: 267,
-  },
-  desenvolvidoPorJohn: {
-    marginLeft: -85.5,
-    top: 771,
-    fontSize: 12,
-    lineHeight: 17,
-    fontFamily: FontFamily.arial,
-    color: "rgba(160, 216, 253, 0.3)",
-    textAlign: "left",
-  },
-  visualizarTodas: {
-    left: 214,
-    color: Color.colorWhite,
-    fontSize: FontSize.size_sm,
-    textAlign: "left",
-    fontFamily: FontFamily.title3,
+  dadosGraus: {
+    fontSize: 24,
+    color: Color.colorBranco,
+    fontFamily: FontFamily.interMedium,
     fontWeight: "700",
-    lineHeight: 32,
-    position: "absolute",
   },
-  dWeatherForecastIconsSetW6: {
-    width: 41,
+  tituloDado: {
+    fontSize: 16,
+    color: Color.colorBranco,
+    fontFamily: FontFamily.interMedium,
+    fontWeight: "500",
   },
-  recife: {
-    top: 21,
-    fontSize: FontSize.size_mid_3,
-    fontFamily: FontFamily.title3,
+  tituloText: {
+    fontSize: 14,
+    color: Color.colorBranco,
+    fontFamily: FontFamily.interMedium,
     fontWeight: "700",
+    paddingBottom: 15,
+  },
+  card: {
+    width: 67,
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderRadius: 10,
+    padding: 10,
+  },
+  tempoCard: {
+    fontSize: 16,
+    color: Color.colorBranco,
+    fontFamily: FontFamily.interMedium,
+    fontWeight: "700",
+    paddingBottom: 5,
+  },
+  tituloCidade: {
+    fontSize: 14,
+    color: Color.colorBranco,
+    fontFamily: FontFamily.interMedium,
+    fontWeight: "500",
+    width: "100%",
+  },
+  titulos: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
   },
   cidade: {
-    fontFamily: FontFamily.interRegular,
-    fontSize: FontSize.size_sm,
-    top: 0,
-  },
-  groupFrame: {
-    width: 109,
-    marginLeft: -54.5,
-    marginTop: -20.75,
-  },
-  groupWrapper: {
-    marginTop: -37.5,
-    marginLeft: -67.5,
-    height: 42,
-    width: 109,
-    left: "50%",
-    top: "50%",
-    position: "absolute",
-  },
-  c6: {
-    top: 18,
-    fontSize: FontSize.size_base_1,
-    fontFamily: FontFamily.title3,
+    fontSize: 17.5,
+    color: Color.colorBranco,
+    fontFamily: FontFamily.interMedium,
     fontWeight: "700",
   },
-  temp: {
-    fontSize: FontSize.size_2xs_1,
-    fontFamily: FontFamily.interRegular,
-    top: 0,
+  weather: {
+    width: 35,
+    height: 35,
   },
-  groupView: {
-    height: 26,
-    width: 38,
+  dataCard: {
+    fontSize: 12,
+    color: Color.colorBranco,
+    fontFamily: FontFamily.interMedium,
+    fontWeight: "700",
+    paddingTop: 5,
   },
-  parent: {
-    width: 43,
-    marginLeft: 32,
-    height: 26,
-  },
-  frameView: {
-    top: 75,
-    left: 31,
-  },
-  groupParent1: {
-    marginLeft: 14,
-  },
-  outrasCidadesParent: {
-    top: 590,
-    width: 396,
-    height: 155,
-    left: 25,
-    position: "absolute",
-  },
-  icsharpInfo: {
-    top: 47,
-    left: 325,
-    width: 24,
-    height: 24,
-    position: "absolute",
-  },
-  registre: {
-    flex: 1,
-    width: "100%",
-    height: 812,
-    backgroundColor: "transparent",
-    borderRadius: Border.br_xl,
-    overflow: "hidden",
+  imagemTempoCidade: {
+    width: 41, 
+    height: 41,
   },
 });
 
