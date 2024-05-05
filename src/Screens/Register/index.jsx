@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
   },
   containerForm: {
     flex: 1,
+    zIndex: 10,
     width: "100%",
     alignItems: 'center',
     marginTop: 85,

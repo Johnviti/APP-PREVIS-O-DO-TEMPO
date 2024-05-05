@@ -1,10 +1,65 @@
 import * as React from "react";
-import { Text, StyleSheet, View, TextInput } from "react-native";
+import { ScrollView, Text, StyleSheet, View, TextInput } from "react-native";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { FontFamily, Color, Border, FontSize } from "../../../GlobalStyles";
+import Toast from 'react-native-toast-message';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+import { useEffect, useState } from 'react';
 
-const Registre1 = () => {
+
+const Home = () => {
+
+  const [weather, setWeather] = useState(null);
+  const [daysweather, setDaysweather] = useState(null);
+  const [cidade, setCidade] = useState('Maceió');
+
+  useEffect(() => {
+      HandleSubmit();
+  }, []);
+
+  const HandleChange = (text) => {
+      setCidade(text.nativeEvent.text);
+  }
+
+  const HandleSubmit = (e) => {
+    fetch(`http://api.weatherapi.com/v1/current.json?key=560ac4f5cf1f41168a0195626232312&q=${cidade}&lang=pt`)
+        .then((response) => {
+            Toast.show({
+                type: 'success',
+                text1: 'Sucesso',
+                text2: 'Requisição concluída com sucesso!',
+            });
+            return response.json();
+        })
+        .then((data) => {
+            setWeather(data);
+        })
+        .catch((error) => {
+            Toast.show({
+                type: 'error',
+                text1: 'Erro',
+                text2: 'Ocorreu um erro na requisição.',
+            });
+            console.error(error);
+        });
+
+    fetch(`http://api.weatherapi.com/v1/forecast.json?key=560ac4f5cf1f41168a0195626232312&q=${cidade}&days=7&lang=pt`)
+        .then((response) => response.json())
+        .then((data) => {
+            setDaysweather(data);
+        })
+        .catch((error) => {
+            Toast.show({
+                type: 'error',
+                text1: 'Erro',
+                text2: 'Ocorreu um erro na requisição.',
+            });
+            console.error(error);
+        });
+    }
+
   return (
     <LinearGradient
     style={styles.home}
@@ -12,123 +67,72 @@ const Registre1 = () => {
     colors={["#438bf8", "#0066ff"]}
   >
     <View style={styles.containerInput}>
-      <Text style={styles.data}>24 de abril</Text>
+      <Text style={styles.data}>{format(new Date(day.date), 'dd', { locale: ptBR })}</Text>
       <View style={styles.input}>
                 <Image
                   style={styles.icon}
                   contentFit="cover"
                   source={require("../../../assets/group.png")}
                 />
-                <TextInput style={styles.inputCidade} placeholder="Cidade" />
+                <TextInput 
+                 style={styles.inputCidade}
+                 placeholder="Cidade" 
+                 onChange={(text) => HandleChange(text)}
+                 />
+                 <Image
+                  style={styles.icon}
+                  contentFit="cover"
+                  source={require("../../../assets/group.png")}
+                  onPress={HandleSubmit}
+                />
       </View>
     </View>
     <View style={styles.containerInformacao}>
-      <Text style={styles.tempo} >18ºC</Text>
-      <View style={styles.containerDados}>
-        <Image
-          style={styles.image}
-          contentFit="cover"
-          source={require("../../../assets/time.png")}
-        />
-        <View style={styles.containerDado}>
-          <View>
-            <Text style={styles.tituloDado}>Umidade</Text>
-            <Text style={styles.dadosGraus}>25%</Text>
-          </View>
-          <View>
-            <Text style={styles.tituloDado}>Clima</Text>
-            <Text style={styles.dadosClima}>Céu Limpo</Text>
+    {weather && (
+        <>
+        <Text style={styles.tempo}>{weather.current.temp_c}C</Text>
+        <View style={styles.containerDados}>
+          <Image
+            style={styles.image}
+            contentFit="cover"
+            source={require("../../../assets/time.png")}
+          />
+          <View style={styles.containerDado}>
+            <View>
+              <Text style={styles.tituloDado}>Umidade</Text>
+              <Text style={styles.dadosGraus}>25%</Text>
+            </View>
+            <View>
+              <Text style={styles.tituloDado}>Clima</Text>
+              <Text style={styles.dadosClima}>{weather.current.condition.text}</Text>
+            </View>
           </View>
         </View>
-      </View>
+        </>
+    )}
+      
+     
     </View>
     <View style={styles.containerSemanalmente}>
       <Text style={styles.tituloText}>Semanalmente</Text>
       <View style={styles.containerCard}>
-        <LinearGradient
-        style={styles.card}
-        locations={[0, 1]}
-        colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
-          <Text style={styles.tempoCard}>18ºC</Text>
-          <Image 
-            style={styles.weather}
-            contentFit="cover"
-            source={require("../../../assets/sunn.png")}
-          />
-          <Text style={styles.dataCard}>05/05</Text>
-        </LinearGradient>
-        <LinearGradient
-        style={styles.card}
-        locations={[0, 1]}
-        colors={["#2F91F5", "#37CAF5"]}>
-          <Text style={styles.tempoCard}>18ºC</Text>
-          <Image 
-            style={styles.weather}
-            contentFit="cover"
-            source={require("../../../assets/sunn.png")}
-          />
-          <Text style={styles.dataCard}>05/05</Text>
-        </LinearGradient>
-        <LinearGradient
-        style={styles.card}
-        locations={[0, 1]}
-        colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
-          <Text style={styles.tempoCard}>18ºC</Text>
-          <Image 
-            style={styles.weather}
-            contentFit="cover"
-            source={require("../../../assets/sunn.png")}
-          />
-          <Text style={styles.dataCard}>05/05</Text>
-        </LinearGradient>
-        <LinearGradient
-        style={styles.card}
-        locations={[0, 1]}
-        colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
-          <Text style={styles.tempoCard}>18ºC</Text>
-          <Image 
-            style={styles.weather}
-            contentFit="cover"
-            source={require("../../../assets/sunn.png")}
-          />
-          <Text style={styles.dataCard}>05/05</Text>
-        </LinearGradient>
-        <LinearGradient
-        style={styles.card}
-        locations={[0, 1]}
-        colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
-          <Text style={styles.tempoCard}>18ºC</Text>
-          <Image 
-            style={styles.weather}
-            contentFit="cover"
-            source={require("../../../assets/sunn.png")}
-          />
-          <Text style={styles.dataCard}>05/05</Text>
-        </LinearGradient>
-        <LinearGradient
-        style={styles.card}
-        locations={[0, 1]}
-        colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
-          <Text style={styles.tempoCard}>18ºC</Text>
-          <Image 
-            style={styles.weather}
-            contentFit="cover"
-            source={require("../../../assets/sunn.png")}
-          />
-          <Text style={styles.dataCard}>05/05</Text>
-        </LinearGradient>
-        <LinearGradient
-        style={styles.card}
-        locations={[0, 1]}
-        colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
-          <Text style={styles.tempoCard}>18ºC</Text>
-          <Image 
-            style={styles.weather}
-            contentFit="cover"
-            source={require("../../../assets/sunn.png")}
-          />
-          <Text style={styles.dataCard}>05/05</Text>
-        </LinearGradient>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {daysweather && daysweather.forecast.forecastday.map((day, index) => (
+              <LinearGradient
+              style={styles.card}
+              locations={[0, 1]}
+              colors={["rgba(0, 0, 0, 0.2)", "rgba(0, 0, 0, 0.15)"]}>
+                <Text style={styles.tempoCard}>{day.day.avgtemp_c}°C</Text>
+                <Image 
+                  style={styles.weather}
+                  contentFit="cover"
+                  source={require("../../../assets/sunn.png")}
+                />
+                <Text style={styles.dataCard}>{format(new Date(day.date), 'dd', { locale: ptBR })}</Text>
+              </LinearGradient>
+          ))}
+      </ScrollView>
+        
       </View>
     </View>
     <View style={styles.containerClimaCidade}>
@@ -400,4 +404,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Registre1;
+export default Home;

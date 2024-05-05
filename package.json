@@ -21,6 +21,8 @@
     "@react-navigation/routers": "^6.1.0",
     "@react-navigation/stack": "^6.3.20",
     "@types/react": "~18.2.45",
+    "@rneui/base": "^4.0.0-rc.7",
+    "@rneui/themed": "^4.0.0-rc.8",
     "date-fns": "^3.0.6",
     "expo": "~49.0.15",
     "expo-font": "~11.10.3",
